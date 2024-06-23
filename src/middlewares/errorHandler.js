@@ -1,6 +1,6 @@
-export const errorHandler = (_error, _req, res, _next) => {
-  res.status(500).json({
-    status: 500,
-    message: 'Something went wrong',
+export const errorHandler = (error, _req, res, _next) => {
+  res.status(error.status || 500).json({
+    status: error.status || 500,
+    message: error.message || 'Something went wrong',
   });
 };
