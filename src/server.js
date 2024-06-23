@@ -4,6 +4,7 @@ import cors from 'cors';
 import { env } from './utils/env.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import productsRouter from './routers/products.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -13,7 +14,9 @@ export const setupServer = () => {
   app.use(express.json());
   app.use(cors());
 
-  app.use("*", notFoundHandler);
+  app.use(productsRouter);
+
+  app.use('*', notFoundHandler);
   app.use(errorHandler);
 
   app.listen(PORT, () => {
