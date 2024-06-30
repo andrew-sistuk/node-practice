@@ -1,7 +1,22 @@
 import { ProductsCollection } from '../db/models/products.js';
+import { SORT_ORDER } from '../constans/index.js';
+import { parseSortOrder } from '../utils/parseSortOrder.js';
 
-const getAll = async () => {
-  return await ProductsCollection.find();
+const getAll = async (req) => {
+  const {
+    sortBy = 'name',
+    sortOrder = SORT_ORDER.ASC,
+    minPrice,
+    maxPrice,
+  } = req.query;
+
+  return await ProductsCollection.find()
+    .where('price')
+    .gte(minPrice)
+    .lte(maxPrice)
+    .sort({
+      [sortBy]: parseSortOrder(sortOrder),
+    });
 };
 
 const getById = async (productId) => {
@@ -19,8 +34,8 @@ const updateById = async (productId, payload) => {
     },
     payload,
     {
-      new: true
-    }
+      new: true,
+    },
   );
 };
 
