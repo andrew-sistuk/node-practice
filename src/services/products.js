@@ -12,4 +12,16 @@ const add = async (paylod) => {
   return await ProductsCollection.create(paylod);
 };
 
-export const ProductService = { getAll, getById, add };
+const updateById = async (productId, payload) => {
+  return await ProductsCollection.findOneAndUpdate(
+    {
+      _id: productId,
+    },
+    payload,
+    {
+      new: true
+    }
+  );
+};
+
+export const ProductService = { getAll, getById, add, updateById };
