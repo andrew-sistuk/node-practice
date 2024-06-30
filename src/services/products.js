@@ -8,4 +8,8 @@ const getById = async (productId) => {
   return await ProductsCollection.findById(productId);
 };
 
-export const ProductService = { getAll, getById };
+const add = async (paylod) => {
+  return await ProductsCollection.create(paylod);
+};
+
+export const ProductService = { getAll, getById, add };
