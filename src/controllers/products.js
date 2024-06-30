@@ -1,8 +1,8 @@
 import createHttpError from 'http-errors';
 import { ProductService } from '../services/products.js';
 
-const getAll = async (_, res) => {
-  const products = await ProductService.getAll();
+const getAll = async (req, res) => {
+  const products = await ProductService.getAll(req);
   res.json({
     status: 200,
     message: 'Successfully found products!',
@@ -41,12 +41,10 @@ const updateById = async (req, res) => {
   }
 
   res.json({
-status: 200,
-message: 'Successfully updated a product',
-data: product,
+    status: 200,
+    message: 'Successfully updated a product',
+    data: product,
   });
 };
-
-
 
 export const productsController = { getAll, getById, add, updateById };
