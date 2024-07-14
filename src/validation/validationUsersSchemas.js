@@ -10,3 +10,13 @@ export const registerUserSchema = Joi.object({
   'string.email': 'Field {#label} must be a valid email address.',
   'any.required': 'missing required {#label} field',
 });
+
+export const loginUserSchema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+}).messages({
+  'string.base': 'Field {#label} must be a string.',
+  'string.empty': 'Field {#label} cannot be empty.',
+  'string.email': 'Field {#label} must be a valid email address.',
+  'any.required': 'missing required {#label} field',
+});
