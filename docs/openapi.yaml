@@ -19,6 +19,11 @@ paths:
   /products:
     get:
       $ref: ../swagger/path/products/get.yaml
+    post:
+      $ref: ../swagger/path/products/post.yaml
+  /products/{id}:
+    get:
+      $ref: ../swagger/path/products/{id}/get.yaml
 components:
   securitySchemes:
     bearerAuth:
