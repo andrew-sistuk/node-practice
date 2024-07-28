@@ -1,9 +1,9 @@
-# swagger/paths/studens/{id}/get.yaml
+# swagger/paths/studens/get.yaml
 tags:
-  - Products
-summary: Get product by id
+  - Product
+summary: Get products
 operationId: getProduct
-description: 'Get product by id'
+description: 'Get products'
 security:
   - bearerAuth: []
 parameters:
@@ -43,3 +43,5 @@ responses:
                 $ref: '../../components/schemas/product.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'
